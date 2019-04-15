@@ -722,41 +722,44 @@ and enjoy the JSON returned by the first endpoint of your web application.
 I hope you can now appreciate the power of the layered architecture that we created. We definitely wrote a lot of code to “just” print out a list of models, but the code we wrote is a skeleton that can easily be extended and modified. It is also fully tested, which is a part of the implementation that many software projects struggle with.
 The use case I presented is purposely very simple. It doesn’t require any input and it cannot return error conditions, so the code we wrote completely ignored input validation and error management. These topics are however extremely important, so we need to discuss how a clean architecture can deal with them.
 
-## 日本語訳まとめ
+## 日本語訳
 ### Project overview
-要約
-- このプロジェクトの目的は、簡単な検索エンジンを作成することです。
-- この検索エンジンでは、賃貸の部屋を検索でき、以下の条件で絞り込むことができます。
+##### 要約
+- このプロジェクトでは、簡単な検索エンジンを作成します。
+- この検索エンジンは、賃貸を検索することでき、以下の条件で絞り込むことができます。
   - ユニークな識別子
   - 部屋の広さ（平方メートル）
   - 賃料（ユーロ／日）
   - 経度
   - 緯度
-- TDDに従いますが、長くなるので全てのステップについては説明しません。
-- クリーンアーキテクチャの概念を実装するのにPythonを用います。あくまでこの実装は、システムを複数の層へ分割することの解決策の一つです。
+- 実装方法は、TDDに従いますが、説明が長くなるので全てのステップについては解説しません。
+- クリーンアーキテクチャの概念を実装するのにPythonを用います。あくまでこの実装は、システムを複数の層へ分割することの解決策の一つにすぎません。
 
 ### Project setup
-省略
+##### 省略
 
 ### Domain models
-要約
+##### 要約
 - Roomモデルの簡単な定義を行います。
 - Chapter1でも説明したように、このモデルは一般的なWebフレームワークの同等モデルよりも軽量です。
 - Roomモデルを初期化するためのデータを他の層から受け取ること、また、そのデータが辞書型である可能性が高いことを考えると、辞書型からモデルを初期化するメソッドを作成すると便利です。（Room.from_dict）
 - クリーンアーキテクチャの利点の一つは、各層に小さなコードが含まれており、それらが分離されて単純なタスクを実行するということです。
-  - モデルを比較するeqメソッドは便利なので実装しますが、Roomオブジェクトのフィールドを比較すると、非常に大きく一連のステートメントが生成される可能性があるため、Roomモデルを辞書型に変換するモデルも作成しておきます。（Room.to_dict）
+  - モデルを比較するeqメソッドは便利なので実装しますが、Roomオブジェクトのフィールドを比較すると、非常に大きな一連のステートメントが生成される可能性があるため、Roomモデルを辞書型に変換するメソッドも作成しておきます。（Room.to_dict）
 
 ### Serializers
-要約
-- 外部のレイヤーはRoomモデルを使用できますが、呼び出した結果としてモデルを返したい場合は、シリアライザが必要です。
+##### 要約
+- Entites (Domain models)より外側の層は、Roomモデルを使用できますが、呼び出した結果としてモデルを返したい場合は、シリアライザが必要です。
 - 一般的なシリアライズ形式はJSONです。
 - シリアライザはモデルの一部ではありませんが、モデルのインスタンスを受け取り、その構造と値の表現を生成する外部の特殊クラスです。
-- モデルをシリアル化するために`json.dumps(room、cls = RoomEncoder)`構文を使用することができます。 
+- モデルをシリアライズするために`json.dumps(room, cls = RoomEncoder)`構文を使用することができます。 
+
+##### ※ シリアライズ（直列化）
+- インスタンスをバイト列として出力すること。簡単にインスタンスを外部記憶装置などに保存し、インスタンスの情報を永続化することができる。
 
 ### Use cases
-要約
+##### 要約
 - アプリケーション内で動作する実際のビジネスロジックを実装します。
 - 作成可能な最も簡単なユースケースは、リポジトリに格納されている全てのRoomオブジェクトを取得して返すものです。
-  - ここでは、検索を絞り込むための実装はしません。（次の章で実装）
-- リポジトリは、クリーンアーキテクチャによれば、外部レイヤ（external systems）で実装されます。リポジトリにはインターフェスとしてアクセスします。
-- テストにおいては、リポジトリをモック化することで簡単に行えます。
+  - ここでは、検索を条件で絞り込むための実装はしません。（次の章で実装）
+- リポジトリ（データアクセス）は、クリーンアーキテクチャによれば、外部レイヤ（external systems）で実装されます。リポジトリにはインターフェスとしてアクセスします。
+- ユースケースのテストは、リポジトリをモック化することで簡単に実装できます。
