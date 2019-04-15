@@ -742,9 +742,9 @@ The use case I presented is purposely very simple. It doesn’t require any inpu
 ##### 要約
 - Roomモデルの簡単な定義を行います。
 - Chapter1でも説明したように、このモデルは一般的なWebフレームワークの同等モデルよりも軽量です。
-- Roomモデルを初期化するためのデータを他の層から受け取ること、また、そのデータが辞書型である可能性が高いことを考えると、辞書型からモデルを初期化するメソッドを作成すると便利です。（Room.from_dict）
+- Roomモデルを初期化するためのデータを他の層から受け取ること、また、そのデータが辞書型である可能性が高いことを考えると、辞書型からモデルを初期化するメソッドを作成すると便利です。- [Room.from_dict](https://github.com/esaki01/clean-architecture-python/blob/master/app/domain/room.py#L10)
 - クリーンアーキテクチャの利点の一つは、各層に小さなコードが含まれており、それらが分離されて単純なタスクを実行するということです。
-  - モデルを比較するeqメソッドは便利なので実装しますが、Roomオブジェクトのフィールドを比較すると、非常に大きな一連のステートメントが生成される可能性があるため、Roomモデルを辞書型に変換するメソッドも作成しておきます。（Room.to_dict）
+  - モデルを比較するeqメソッドは便利なので実装しますが、Roomオブジェクトのフィールドを比較すると、非常に大きな一連のステートメントが生成される可能性があるため、Roomモデルを辞書型に変換するメソッドも作成しておきます。- [Room.to_dict](https://github.com/esaki01/clean-architecture-python/blob/master/app/domain/room.py#L20)
 
 ### Serializers
 ##### 要約
