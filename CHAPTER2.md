@@ -784,7 +784,7 @@ The use case I presented is purposely very simple. It doesn’t require any inpu
 - cli.pyは、リポジトリを初期化し、それを使ってユースケースを初期化、実行します。一般的に、接続するexternal systemsがどんなものであっても、これがクリーンアーキテクチャを利用する方法になります。
 
 ### HTTP API
-##### 要約
+##### TODO 要約
 - このセクションでは、部屋リストのユースケース用のHTTPエンドポイントの作成について説明します。
 - HTTPエンドポイントを公開するには、Pythonで書かれたWebサーバーが必要です。この場合はFlaskを選びました。
 - 私たちはすでに独自のリポジトリ層を実装しているので、データベースやORMを使用しません。
