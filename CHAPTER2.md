@@ -790,7 +790,7 @@ The use case I presented is purposely very simple. It doesn’t require any inpu
 - このセクションでは、部屋一覧（Room list）を取得するユースケースのHTTPエンドポイントの作成について説明します。
 - HTTPエンドポイントを公開するには、Pythonで書かれたWebサーバーが必要です。今回はFlaskを選びました。
 - 私たちはすでに独自のリポジトリ層を実装しているので、データベースやORMを使用しません。
-- テスト環境、開発環境、および実稼働環境に対して異なる構成を定義します。
-- このAPIの構造はとても単純です。エンドポイントを実行する簡単な関数を作成し、GETリクエストを処理する/roomsエンドポイントを割り当てます。この関数は何らかのロジックを実行し、最終的にはJSONデータ、正しいMIMEタイプ、およびロジックの成功または失敗を表すHTTPステータスを含むResponseを返します。
+- テスト環境、開発環境、および実稼働環境に対して異なる構成を定義します。 - [flask_settings.py](https://github.com/esaki01/clean-architecture-python/blob/master/main/flask_settings.py)
+- このAPIの構造はとても単純です。エンドポイントを実行する簡単な関数を作成し、GETリクエストを処理する/roomsエンドポイントを割り当てます。この関数は何らかのロジックを実行し、最終的にはJSONデータ、正しいMIMEタイプ、およびロジックの成功または失敗を表すHTTPステータスを含むResponseを返します。 - [rest/room.py](https://github.com/esaki01/clean-architecture-python/blob/master/main/rest/room.py)
 - ユースケースによって返されるモデルを提供するために、リポジトリを初期化しました。これは、CLIで実行したものとまったく同じコードです。コードの残りの部分では、適切なHTTPレスポンスを作成し、ユースケースの結果をシリアル化し、HTTPステータスを200（成功）に設定します。
   - これは、クリーンアーキテクチャの良さを簡単に教えてくれます。CLIインターフェースまたはWebサービスの作成はプレゼンテーション層でのみ異なり、ロジックは異なりません。
