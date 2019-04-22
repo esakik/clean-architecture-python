@@ -1,5 +1,12 @@
+import json
+
+from flask import Blueprint, Response
+
 from main.repository import memrepo as mr
 from main.use_cases import room_list_use_case as uc
+from main.serializers import room_json_serializer as ser
+
+blueprint = Blueprint('room', __name__)
 
 room1 = {
     'code': 'f853578c-fc0f-4e65-81b8-566c5dffa35a',
@@ -25,9 +32,11 @@ room3 = {
     'latitude': 51.45994069,
 }
 
-repo = mr.MemRepo([room1, room2, room3])
-use_case = uc.RoomListUseCase(repo)
 
-result = use_case.execute()
+@blueprint.route('/rooms', methods=['GET'])
+def room():
+    repo = mr.MemRepo([room1, room2, room3])
+    use_case = uc.RoomListUseCase(repo)
+    result = use_case.execute()
 
-print([room.to_dict() for room in result])
+    return Response(json.dumps(result, cls=ser.RoomJsonEncoder), mimetype='application/json', status=200)

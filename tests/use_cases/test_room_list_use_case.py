@@ -2,8 +2,8 @@ import pytest
 import uuid
 from unittest import mock
 
-from app.domain import room as r
-from app.use_cases import room_list_use_case as uc
+from main.domain import room as r
+from main.use_cases import room_list_use_case as uc
 
 
 @pytest.fixture

@@ -1,7 +1,7 @@
 import pytest
 
-from app.domain import room as r
-from app.repository import memrepo
+from main.domain import room as r
+from main.repository import memrepo
 
 
 @pytest.fixture

@@ -1,8 +1,8 @@
 import json
 import uuid
 
-from app.serializers import room_json_serializer as ser
-from app.domain import room as r
+from main.serializers import room_json_serializer as ser
+from main.domain import room as r
 
 
 def test_serialize_domain_room():
