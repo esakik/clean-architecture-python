@@ -742,9 +742,9 @@ The use case I presented is purposely very simple. It doesn’t require any inpu
 ##### 要約
 - Roomモデルの簡単な定義を行います。
 - Chapter1でも説明したように、このモデルは一般的なWebフレームワークの同等モデルよりも軽量です。
-- Roomモデルを初期化するためのデータを他の層から受け取ること、また、そのデータが辞書型である可能性が高いことを考えると、辞書型からモデルを初期化するメソッドを作成すると便利です。- [Room.from_dict](https://github.com/esaki01/clean-architecture-python/blob/master/app/domain/room.py#L10)
+- Roomモデルを初期化するためのデータを他の層から受け取ること、また、そのデータが辞書型である可能性が高いことを考えると、辞書型からモデルを初期化するメソッドを作成すると便利です。- [Room.from_dict](https://github.com/esaki01/clean-architecture-python/blob/master/main/domain/room.py#L10)
 - クリーンアーキテクチャの利点の一つは、各層に小さなコードが含まれており、それらが分離されて単純なタスクを実行するということです。
-  - モデルを比較するeqメソッドは便利なので実装しますが、Roomオブジェクトのフィールドを比較すると、非常に大きな一連のステートメントが生成される可能性があるため、Roomモデルを辞書型に変換するメソッドも作成しておきます。- [Room.to_dict](https://github.com/esaki01/clean-architecture-python/blob/master/app/domain/room.py#L20)
+  - モデルを比較するeqメソッドは便利なので実装しますが、Roomオブジェクトのフィールドを比較すると、非常に大きな一連のステートメントが生成される可能性があるため、Roomモデルを辞書型に変換するメソッドも作成しておきます。- [Room.to_dict](https://github.com/esaki01/clean-architecture-python/blob/master/main/domain/room.py#L20)
 
 ### Serializers
 ##### 要約
@@ -775,7 +775,7 @@ The use case I presented is purposely very simple. It doesn’t require any inpu
   - ? しかし、レイヤのexternal APIはSQLAlchemyによって提供されているものではありません。External APIは、ユースケースがデータを取得するために呼び出す一連の機能を減らしたものです。内部実装では、生のSQLクエリからRabbitMQネットワークを介した複雑なリモート呼び出しシステムまで、さまざまなソリューションを使用して同じ目的を達成できます。
 - リポジトリの非常に重要な機能は、ドメインモデルを返すことができることです。これは、フレームワークのORMが通常行うことと一致しています。 
 - 3番目のレイヤの要素は、内部層で定義されているすべての要素にアクセスできます。つまり、ドメインモデルとユースケースはリポジトリから直接呼び出して使用できます。
-- [このクラス](https://github.com/esaki01/clean-architecture-python/blob/master/app/repository/memrepo.py)が実際のデータベースのラッパークラスであることは容易に想像できます。コードはより複雑になるかもしれませんが、単一のパブリックメソッドがあるという点では同じです。データベースリポジトリについては、後の章で詳しく説明します。
+- [このクラス](https://github.com/esaki01/clean-architecture-python/blob/master/main/repository/memrepo.py)が実際のデータベースのラッパークラスであることは容易に想像できます。コードはより複雑になるかもしれませんが、単一のパブリックメソッドがあるという点では同じです。データベースリポジトリについては、後の章で詳しく説明します。
 
 ### A command line interface
 ##### 要約
