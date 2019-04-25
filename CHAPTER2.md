@@ -775,7 +775,39 @@ The use case I presented is purposely very simple. It doesn’t require any inpu
   - ? しかし、レイヤのexternal APIはSQLAlchemyによって提供されているものではありません。External APIは、ユースケースがデータを取得するために呼び出す一連の機能を減らしたものです。内部実装では、生のSQLクエリからRabbitMQネットワークを介した複雑なリモート呼び出しシステムまで、さまざまなソリューションを使用して同じ目的を達成できます。
 - リポジトリの非常に重要な機能は、ドメインモデルを返すことができることです。これは、フレームワークのORMが通常行うことと一致しています。 
 - 3番目のレイヤの要素は、内部層で定義されているすべての要素にアクセスできます。つまり、ドメインモデルとユースケースはリポジトリから直接呼び出して使用できます。
-- [このクラス](https://github.com/esaki01/clean-architecture-python/blob/master/main/repository/memrepo.py)が実際のデータベースのラッパークラスであることは容易に想像できます。コードはより複雑になるかもしれませんが、単一のパブリックメソッドがあるという点では同じです。データベースリポジトリについては、後の章で詳しく説明します。
+- [このリポジトリ](https://github.com/esaki01/clean-architecture-python/blob/master/main/repository/memrepo.py)が実際のデータベースのラッパークラスであることは容易に想像できます。コードはより複雑になるかもしれませんが、単一のパブリックメソッドがあるという点では同じです。データベースリポジトリについては、後の章で詳しく説明します。
+
+``` 参考：SQLAlchemyでPostgreSQLにアクセスする
+import sqlalchemy
+import sqlalchemy.orm
+import sqlalchemy.ext.declarative
+
+
+Base = sqlalchemy.ext.declarative.declarative_base()
+
+class Sample(Base):
+    __tablename__ = 'sample'
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    name = sqlalchemy.Column(sqlalchemy.String(20))
+
+url = 'postgresql://pgadmin:password@192.168.1.101:5432/sample'
+engine = sqlalchemy.create_engine(url, echo=True)
+
+# セッションを作成
+Session = sqlalchemy.orm.sessionmaker(bind=engine)
+session = Session()
+
+# 登録したいオブジェクトを定義
+sample = Sample(name='sample')
+
+# セッションに追加
+session.add(sample)
+
+# 追加したデータを検索
+result = session.query(Sample).filter_by(name='sample').first() 
+print(result.id, result.name)
+  
+```
 
 ### A command line interface
 ##### 要約
