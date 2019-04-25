@@ -740,7 +740,7 @@ The use case I presented is purposely very simple. It doesn’t require any inpu
 
 ### Domain models
 ##### 要約
-- Roomモデルの簡単な定義を行います。 - [room.py](https://github.com/esaki01/clean-architecture-python/blob/master/main/domain/room.py)
+- Roomモデルの簡単な定義を行います。 - [domain/room.py](https://github.com/esaki01/clean-architecture-python/blob/master/main/domain/room.py)
 - Chapter1でも説明したように、このモデルは一般的なWebフレームワークの同等モデルよりも軽量です。
 - Roomモデルを初期化するためのデータを他の層から受け取ること、また、そのデータが辞書型である可能性が高いことを考えると、辞書型からモデルを初期化するメソッドを作成すると便利です。- [Room.from_dict](https://github.com/esaki01/clean-architecture-python/blob/master/main/domain/room.py#L10)
 - クリーンアーキテクチャの利点の一つは、各層に小さなコードが含まれており、それらが分離されて単純なタスクを実行するということです。
@@ -748,7 +748,7 @@ The use case I presented is purposely very simple. It doesn’t require any inpu
 
 ### Serializers
 ##### 要約
-- Entites (Domain models)より外側の層は、Roomモデルを使用できますが、呼び出した結果としてモデルを返したい場合は、シリアライザが必要です。- [room_json_serializer.py](https://github.com/esaki01/clean-architecture-python/blob/master/main/serializers/room_json_serializer.py)
+- Entites (Domain models)より外側の層は、Roomモデルを使用できますが、呼び出した結果としてモデルを返したい場合は、シリアライザが必要です。- [serializers/room_json_serializer.py](https://github.com/esaki01/clean-architecture-python/blob/master/main/serializers/room_json_serializer.py)
 - 一般的なシリアライズ形式はJSONです。
 - シリアライザはモデルの一部ではありませんが、モデルのインスタンスを受け取り、その構造と値の表現を生成する外部の特殊クラスです。
 - モデルをシリアライズするために`json.dumps(room, cls = RoomEncoder)`構文を使用することができます。 
@@ -760,23 +760,23 @@ The use case I presented is purposely very simple. It doesn’t require any inpu
 ### Use cases
 ##### 要約
 - アプリケーション内で動作する実際のビジネスロジックを実装します。
-- 作成可能な最も簡単なユースケースは、リポジトリに格納されている全てのRoomオブジェクトを取得して返すものです。 - [room_list_use_case.py](https://github.com/esaki01/clean-architecture-python/blob/master/main/use_cases/room_list_use_case.py)
+- 作成可能な最も簡単なユースケースは、リポジトリに格納されている全てのRoomオブジェクトを取得して返すものです。 - [use_cases/room_list_use_case.py](https://github.com/esaki01/clean-architecture-python/blob/master/main/use_cases/room_list_use_case.py)
   - ここでは、検索を条件で絞り込むための実装はしません。（次の章で実装）
 - リポジトリ（データアクセス）は、クリーンアーキテクチャによれば、外部レイヤ（external systems）で実装されます。リポジトリにはインターフェスとしてアクセスします。
-- ユースケースのテストは、リポジトリをモック化することで簡単に実装できます。 - [test_room_list_use_case.py](https://github.com/esaki01/clean-architecture-python/blob/master/tests/use_cases/test_room_list_use_case.py)
+- ユースケースのテストは、リポジトリをモック化することで簡単に実装できます。 - [use_cases/test_room_list_use_case.py](https://github.com/esaki01/clean-architecture-python/blob/master/tests/use_cases/test_room_list_use_case.py)
 - このユースケースは非常に単純に思えるかもしれません（単にリポジトリの特定の関数のラッパークラスになっています）。
   - 実際のところ、このユースケースにはエラーチェックが含まれていません。また、次の章ではリクエストとレスポンスについても説明するので、ユースケースはもう少し複雑になります。
 
 ### The storage system
 ##### 要約
 - ストレージ（リポジトリ）は、クリーンアーキテクチャの3番目のレイヤ、external systemsにあります。このレイヤの要素は、インターフェイスを介して内部要素によってアクセスされます。
-- クリーンアーキテクチャのリポジトリの抽象度は、フレームワークのORMやSQLAlchemyのようなツールによって提供される抽象度よりも高いです。
+- クリーンアーキテクチャのリポジトリの抽象度は、フレームワークのORMやSQLAlchemyのようなツールの抽象度よりも高いです。
 - リポジトリは、アプリケーションが必要とするエンドポイントのみを提供し、アプリケーションが実装する特定のビジネス上の問題に合わせたインターフェースを備えています。
 - SQLAlchemyはSQLデータベースへのアクセスを抽象化するための素晴らしいツールです。リポジトリの内部実装では、たとえばPostgreSQLデータベースへアクセスできるようにします。
   - ? しかし、レイヤのexternal APIはSQLAlchemyによって提供されているものではありません。External APIは、ユースケースがデータを取得するために呼び出す一連の機能を減らしたものです。内部実装では、生のSQLクエリからRabbitMQ（メッセージキューイング処理を行うことができるオープンソースソフトウェア）ネットワークを介した複雑なリモート呼び出しシステムまで、さまざまなソリューションを使用して同じ目的を達成できます。
 - リポジトリの非常に重要な機能は、ドメインモデルを返すことができることです。これは、フレームワークのORMが通常行うことと一致しています。 
 - 3番目のレイヤの要素は、内部層で定義されているすべての要素にアクセスできます。つまり、ドメインモデルとユースケースはリポジトリから直接呼び出して使用できます。
-- [このリポジトリ](https://github.com/esaki01/clean-architecture-python/blob/master/main/repository/memrepo.py)が実際のデータベースのラッパークラスであることは容易に想像できます。コードはより複雑になるかもしれませんが、単一のパブリックメソッドがあるという点では同じです。データベースリポジトリについては、後の章で詳しく説明します。
+- [repository/memrepo.py](https://github.com/esaki01/clean-architecture-python/blob/master/main/repository/memrepo.py)が実際のデータベースのラッパークラスであることは容易に想像できます。コードはより複雑になるかもしれませんが、単一のパブリックメソッドがあるという点では同じです。データベースリポジトリについては、後の章で詳しく説明します。
 
 ``` 参考：SQLAlchemyでPostgreSQLにアクセスする
 import sqlalchemy
@@ -814,7 +814,7 @@ print(result.id, result.name)
 ##### 要約
 - ドメインモデル、シリアライザ、ユースケース、およびリポジトリを作成しましたが、これらすべてを連結するシステムがまだ不足しています。
 - このシステム（賃貸検索エンジン）は、ユーザから入力パラメータを取得し、リポジトリとユースケースを初期化し、リポジトリからドメインモデルを取得するユースケースを実行し、取得したモデルをユーザに返す必要があります。
-- クリーンアーキテクチャの良いところは、external systemsがpluggableであるということです。つまり、使用したいシステムの詳細についての決定を延期することができます。この場合、システムにクエリを実行し、ストレージシステムに含まれるRoomのlistを取得するためのインターフェイスをユーザーに提供します。最も簡単な方法はコマンドラインツールです（後でRESTエンドポイントを作成し、それをWebサーバーを介して公開します）。
+- クリーンアーキテクチャの良いところは、external systemsがpluggableであるということです。つまり、使用したいシステムの詳細についての決定を延期することができます。この場合、システムにクエリを実行し、ストレージシステムに格納されている含まれるRoom listを取得するためのインターフェイスをユーザーに提供します。最も簡単な方法はコマンドラインツールです（後でRESTエンドポイントを作成し、それをWebサーバーを介して公開します）。
 - リポジトリ直下に[cli.py](https://github.com/esaki01/clean-architecture-python/blob/master/cli.py)を作成します。ドメインモデルについてストレージを照会するだけの単純なPythonスクリプトです。
 - cli.pyは、リポジトリを初期化し、ユースケースを初期化、実行します。一般的に、接続するexternal systemsがどんなものであっても、これがクリーンアーキテクチャを利用する手法になります。
 
@@ -825,8 +825,8 @@ print(result.id, result.name)
 - 私たちはすでに独自のリポジトリ層を実装しているので、データベースやORMを使用しません。
 - テスト環境、開発環境、および実稼働環境に対して異なる構成を定義します。 - [flask_settings.py](https://github.com/esaki01/clean-architecture-python/blob/master/main/flask_settings.py)
 - このAPIの構造はとても単純です。エンドポイントを実行する簡単な関数を作成し、GETリクエストを処理する/roomsエンドポイントを割り当てます。この関数は何らかのロジックを実行し、最終的にはJSONデータ、正しいMIMEタイプ、およびロジックの成功または失敗を表すHTTPステータスを含むResponseを返します。 - [rest/room.py](https://github.com/esaki01/clean-architecture-python/blob/master/main/rest/room.py)
-- ユースケースによって返されるモデルを提供するために、リポジトリを初期化しました。これは、CLIで実行したものとまったく同じコードです。コードの残りの部分では、適切なHTTPレスポンスを作成し、ユースケースの結果をシリアル化し、HTTPステータスを200（成功）に設定します。
-  - これは、クリーンアーキテクチャの良さを簡単に教えてくれます。CLIインターフェースまたはWebサービスの作成はプレゼンテーション層でのみ異なり、ロジックは異なりません。
+- ユースケースによってモデルを返却するために、リポジトリを初期化しました。これは、CLIで実行したものとまったく同じコードです。コードの残りの部分では、適切なHTTPレスポンスを作成し、ユースケースの結果をシリアライズし、HTTPステータスを200（成功）に設定します。
+  - これは、簡単ではありますが、クリーンアーキテクチャの威力を示しています。CLIインターフェースとWebサービスではプレゼンテーション層でのみ異なり、ロジック自体に違いはありません。
   
 ### Conclusions
 ##### 要約
