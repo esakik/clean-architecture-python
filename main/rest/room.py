@@ -39,4 +39,5 @@ def room():
     use_case = uc.RoomListUseCase(repo)
     result = use_case.execute()
 
+    # モデルをJSON文字列に変換し、返却する
     return Response(json.dumps(result, cls=ser.RoomJsonEncoder), mimetype='application/json', status=200)
