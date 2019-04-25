@@ -740,7 +740,7 @@ The use case I presented is purposely very simple. It doesn’t require any inpu
 
 ### Domain models
 ##### 要約
-- Roomモデルの簡単な定義を行います。
+- Roomモデルの簡単な定義を行います。 - [room.py](https://github.com/esaki01/clean-architecture-python/blob/master/main/domain/room.py)
 - Chapter1でも説明したように、このモデルは一般的なWebフレームワークの同等モデルよりも軽量です。
 - Roomモデルを初期化するためのデータを他の層から受け取ること、また、そのデータが辞書型である可能性が高いことを考えると、辞書型からモデルを初期化するメソッドを作成すると便利です。- [Room.from_dict](https://github.com/esaki01/clean-architecture-python/blob/master/main/domain/room.py#L10)
 - クリーンアーキテクチャの利点の一つは、各層に小さなコードが含まれており、それらが分離されて単純なタスクを実行するということです。
@@ -748,21 +748,22 @@ The use case I presented is purposely very simple. It doesn’t require any inpu
 
 ### Serializers
 ##### 要約
-- Entites (Domain models)より外側の層は、Roomモデルを使用できますが、呼び出した結果としてモデルを返したい場合は、シリアライザが必要です。
+- Entites (Domain models)より外側の層は、Roomモデルを使用できますが、呼び出した結果としてモデルを返したい場合は、シリアライザが必要です。- [room_json_serializer.py](https://github.com/esaki01/clean-architecture-python/blob/master/main/serializers/room_json_serializer.py)
 - 一般的なシリアライズ形式はJSONです。
 - シリアライザはモデルの一部ではありませんが、モデルのインスタンスを受け取り、その構造と値の表現を生成する外部の特殊クラスです。
 - モデルをシリアライズするために`json.dumps(room, cls = RoomEncoder)`構文を使用することができます。 
 
 ##### ※ シリアライズ（直列化）
-- インスタンスをバイト列として出力すること。簡単にインスタンスを外部記憶装置などに保存し、インスタンスの情報を永続化することができる。
+- オブジェクトからバイト列に変換しファイルなどに出力すること。簡単にオブジェクトを外部記憶装置などに保存し、情報を永続化することができる。
+- デシリアライズは、シリアライズされたファイルなどからオブジェクトに復元すること。
 
 ### Use cases
 ##### 要約
 - アプリケーション内で動作する実際のビジネスロジックを実装します。
-- 作成可能な最も簡単なユースケースは、リポジトリに格納されている全てのRoomオブジェクトを取得して返すものです。
+- 作成可能な最も簡単なユースケースは、リポジトリに格納されている全てのRoomオブジェクトを取得して返すものです。 - [room_list_use_case.py](https://github.com/esaki01/clean-architecture-python/blob/master/main/use_cases/room_list_use_case.py)
   - ここでは、検索を条件で絞り込むための実装はしません。（次の章で実装）
 - リポジトリ（データアクセス）は、クリーンアーキテクチャによれば、外部レイヤ（external systems）で実装されます。リポジトリにはインターフェスとしてアクセスします。
-- ユースケースのテストは、リポジトリをモック化することで簡単に実装できます。
+- ユースケースのテストは、リポジトリをモック化することで簡単に実装できます。 - [test_room_list_use_case.py](https://github.com/esaki01/clean-architecture-python/blob/master/tests/use_cases/test_room_list_use_case.py)
 - このユースケースは非常に単純に思えるかもしれません（単にリポジトリの特定の関数のラッパークラスになっています）。
   - 実際のところ、このユースケースにはエラーチェックが含まれていません。また、次の章ではリクエストとレスポンスについても説明するので、ユースケースはもう少し複雑になります。
 
@@ -772,7 +773,7 @@ The use case I presented is purposely very simple. It doesn’t require any inpu
 - クリーンアーキテクチャのリポジトリの抽象度は、フレームワークのORMやSQLAlchemyのようなツールによって提供される抽象度よりも高いです。
 - リポジトリは、アプリケーションが必要とするエンドポイントのみを提供し、アプリケーションが実装する特定のビジネス上の問題に合わせたインターフェースを備えています。
 - SQLAlchemyはSQLデータベースへのアクセスを抽象化するための素晴らしいツールです。リポジトリの内部実装では、たとえばPostgreSQLデータベースへアクセスできるようにします。
-  - ? しかし、レイヤのexternal APIはSQLAlchemyによって提供されているものではありません。External APIは、ユースケースがデータを取得するために呼び出す一連の機能を減らしたものです。内部実装では、生のSQLクエリからRabbitMQネットワークを介した複雑なリモート呼び出しシステムまで、さまざまなソリューションを使用して同じ目的を達成できます。
+  - ? しかし、レイヤのexternal APIはSQLAlchemyによって提供されているものではありません。External APIは、ユースケースがデータを取得するために呼び出す一連の機能を減らしたものです。内部実装では、生のSQLクエリからRabbitMQ（メッセージキューイング処理を行うことができるオープンソースソフトウェア）ネットワークを介した複雑なリモート呼び出しシステムまで、さまざまなソリューションを使用して同じ目的を達成できます。
 - リポジトリの非常に重要な機能は、ドメインモデルを返すことができることです。これは、フレームワークのORMが通常行うことと一致しています。 
 - 3番目のレイヤの要素は、内部層で定義されているすべての要素にアクセスできます。つまり、ドメインモデルとユースケースはリポジトリから直接呼び出して使用できます。
 - [このリポジトリ](https://github.com/esaki01/clean-architecture-python/blob/master/main/repository/memrepo.py)が実際のデータベースのラッパークラスであることは容易に想像できます。コードはより複雑になるかもしれませんが、単一のパブリックメソッドがあるという点では同じです。データベースリポジトリについては、後の章で詳しく説明します。
