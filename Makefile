@@ -8,10 +8,10 @@ dependencies:
 	pip install -r requirements.txt
 
 .PHONY: run-by-cli
-run-by-cli:
+run-cli:
 	python cli.py
 
 .PHONY: run-by-flask
-run-by-flask:
+run-flask:
 	export FLASK_APP=main/app; \
 	flask run
