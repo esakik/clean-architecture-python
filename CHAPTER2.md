@@ -744,7 +744,10 @@ The use case I presented is purposely very simple. It doesn’t require any inpu
 - Chapter1でも説明したように、このモデルは一般的なWebフレームワークの同等モデルよりも軽量です。
 - Roomモデルを初期化するためのデータを他の層から受け取ること、また、そのデータが辞書型である可能性が高いことを考えると、辞書型からモデルを初期化するメソッドを作成すると便利です。- [Room.from_dict](https://github.com/esaki01/clean-architecture-python/blob/master/main/domain/room.py#L10)
 - クリーンアーキテクチャの利点の一つは、各層に小さなコードが含まれており、それらが分離されて単純なタスクを実行するということです。
-  - モデルを比較するeqメソッドは便利なので実装しますが、Roomオブジェクトのフィールドを比較すると、非常に大きな一連のステートメントが生成される可能性があるため、Roomモデルを辞書型に変換するメソッドも作成しておきます。- [Room.to_dict](https://github.com/esaki01/clean-architecture-python/blob/master/main/domain/room.py#L20)
+- モデルを比較するeqメソッドは便利なので実装しますが、Roomオブジェクトのフィールドを比較すると、非常に大きな一連のステートメントが生成される可能性があるため、Roomモデルを辞書型に変換するメソッドも作成しておきます。- [Room.to_dict](https://github.com/esaki01/clean-architecture-python/blob/master/main/domain/room.py#L20)
+
+##### わからなかったこと
+- なぜモデルを初期化する際のデータが辞書型である可能性が高いのか
 
 ### Serializers
 ##### 要約
@@ -773,10 +776,15 @@ The use case I presented is purposely very simple. It doesn’t require any inpu
 - クリーンアーキテクチャのリポジトリの抽象度は、フレームワークのORMやSQLAlchemyのようなツールの抽象度よりも高いです。
 - リポジトリは、アプリケーションが必要とするエンドポイントのみを提供し、アプリケーションが実装する特定のビジネス上の問題に合わせたインターフェースを備えています。
 - SQLAlchemyはSQLデータベースへのアクセスを抽象化するための素晴らしいツールです。リポジトリの内部実装では、たとえばPostgreSQLデータベースへアクセスできるようにします。
-  - ? しかし、レイヤのexternal APIはSQLAlchemyによって提供されているものではありません。External APIは、ユースケースがデータを取得するために呼び出す一連の機能を減らしたものです。内部実装では、生のSQLクエリからRabbitMQ（メッセージキューイング処理を行うことができるオープンソースソフトウェア）ネットワークを介した複雑なリモート呼び出しシステムまで、さまざまなソリューションを使用して同じ目的を達成できます。
+  - しかし、external APIはSQLAlchemyによって提供されているものではありません。External APIは、ユースケースがデータを取得するために呼び出す一連の機能を減らしたものです。
+  - その内部実装では、生のSQLクエリからRabbitMQ（メッセージキューイング処理を行うことができるオープンソースソフトウェア）ネットワークを介した複雑なリモート呼び出しシステムまで、さまざまなソリューションを使用して同じ目的を達成できます。
 - リポジトリの非常に重要な機能は、ドメインモデルを返すことができることです。これは、フレームワークのORMが通常行うことと一致しています。 
 - 3番目のレイヤの要素は、内部層で定義されているすべての要素にアクセスできます。つまり、ドメインモデルとユースケースはリポジトリから直接呼び出して使用できます。
 - [repository/memrepo.py](https://github.com/esaki01/clean-architecture-python/blob/master/main/repository/memrepo.py)が実際のデータベースのラッパークラスであることは容易に想像できます。コードはより複雑になるかもしれませんが、単一のパブリックメソッドがあるという点では同じです。データベースリポジトリについては、後の章で詳しく説明します。
+
+##### わからなかったこと
+- SQLAlchemy、external API の説明。結局何層目の話をしているのかわからなかった。
+  - おそらく、クリーンアーキテクチャのリポジトリは3層目に位置し、external APIは4層目に位置する。「external APIはSQLAlchemyによって提供されているものではありません。」と言っているのは、SQLAlchemyは、3層目と4層目の橋渡し的な役割を担っている（実装はリポジトリの具像クラス内に書く）ためだと解釈した。
 
 ``` 参考：SQLAlchemyでPostgreSQLにアクセスする
 import sqlalchemy
