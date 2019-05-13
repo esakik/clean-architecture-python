@@ -20,4 +20,4 @@ This repository is for understanding "clean architecture".
 
 - [Chapter 1 - Components of a clean architecture](./CHAPTER1.md)
 - [Chapter 2 - A basic example](./CHAPTER2.md)
-- [Chapter 3 - A basic example](./CHAPTER3.md)
+- [Chapter 3 - Error management](./CHAPTER3.md)
