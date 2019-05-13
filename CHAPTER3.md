@@ -992,14 +992,13 @@ class MemRepo:
 ```
 
 At this point you can fire up the Flask development webserver with flask run, and get the list of all your rooms at
-92https://github.com/pycabook/rentomatic/tree/chapter- 3- the- repository
   
-http://localhost:5000/rooms
-You can also use filters in the URL, like
-http://localhost:5000/rooms?filter_code__eq=f853578c-fc0f-4e65-81b8-566c5dffa35a
-which returns the room with the given code or
-http://localhost:5000/rooms?filter_price__lt=50
-which return all the rooms with a price less than 50.
+http://localhost:5000/rooms  
+You can also use filters in the URL, like  
+http://localhost:5000/rooms?filter_code__eq=f853578c-fc0f-4e65-81b8-566c5dffa35a  
+which returns the room with the given code or  
+http://localhost:5000/rooms?filter_price__lt=50  
+which return all the rooms with a price less than 50.  
 
 ### Conclusions
 We now have a very robust system to manage input validation and error conditions, and it is generic enough to be used with any possible use case. Obviously we are free to add new types of errors to increase the granularity with which we manage failures, but the present version already covers everything that can happen inside a use case.
