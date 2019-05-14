@@ -27,7 +27,6 @@ room3 = {
 
 repo = mr.MemRepo([room1, room2, room3])
 use_case = uc.RoomListUseCase(repo)
-
 result = use_case.execute()
 
 print([room.to_dict() for room in result])
