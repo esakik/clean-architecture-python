@@ -7,11 +7,11 @@ init:
 dependencies:
 	pip install -r requirements.txt
 
-.PHONY: run-by-cli
+.PHONY: run-cli
 run-cli:
 	python cli.py
 
-.PHONY: run-by-flask
+.PHONY: run-flask
 run-flask:
 	export FLASK_APP=main/app; \
 	flask run
