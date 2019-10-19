@@ -6,11 +6,9 @@
 
 This repository is for understanding "clean architecture".
 
-## Technology
+## Python version
 
-- OS: macOS Mojave 10.14.3
-- Language: Python 3.7.2
-- Framework: Flask
+- 3.7.2
 
 ## Reference
 
