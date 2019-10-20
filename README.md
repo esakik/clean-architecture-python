@@ -4,8 +4,8 @@
 ## Overview
 This repository is for understanding "clean architecture".
 
-## Details
-- app1: Clean Architectures in Python
+## Packages
+- app1: sample app of Clean Architectures in Python
 
 
 ## Python version
