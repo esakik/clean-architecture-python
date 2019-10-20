@@ -1,5 +1,5 @@
 import uuid
-from main.domain import room as r
+from src.domain import room as r
 
 
 def test_room_model_init():

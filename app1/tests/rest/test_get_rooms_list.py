@@ -1,7 +1,7 @@
 import json
 from unittest import mock
 
-from main.domain.room import Room
+from src.domain.room import Room
 
 
 room_dict = {

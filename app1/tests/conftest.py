@@ -1,7 +1,7 @@
 import pytest
 
-from main.app import create_app
-from main.flask_settings import TestConfig
+from src.app import create_app
+from src.flask_settings import TestConfig
 
 
 @pytest.yield_fixture(scope='function')

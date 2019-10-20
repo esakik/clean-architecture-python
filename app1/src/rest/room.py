@@ -2,9 +2,9 @@ import json
 
 from flask import Blueprint, Response
 
-from main.repository import memrepo as mr
-from main.use_cases import room_list_use_case as uc
-from main.serializers import room_json_serializer as ser
+from src.repository import memrepo as mr
+from src.use_cases import room_list_use_case as uc
+from src.serializers import room_json_serializer as ser
 
 blueprint = Blueprint('room', __name__)
 
