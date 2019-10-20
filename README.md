@@ -4,12 +4,11 @@
 ## Overview
 This repository is for understanding "clean architecture".
 
-## Packages
-- app1: sample app of Clean Architectures in Python
-
-
 ## Python version
 - 3.7.2
+
+## Packages
+- app1: sample app of Clean Architectures in Python
 
 ## Memo
 - Clean Architecture 達人に学ぶソフトウェアの構造と設計
