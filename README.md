@@ -9,7 +9,7 @@ This repository is for understanding "clean architecture".
 
 ## Memo
 - Clean Architecture 達人に学ぶソフトウェアの構造と設計
-  - [クリーンアーキテクチャ](https://esa-pages.io/p/sharing/13096/posts/81/adbcc7d1228f77b039be.html)
+  - [第22章 クリーンアーキテクチャ](https://esa-pages.io/p/sharing/13096/posts/81/adbcc7d1228f77b039be.html)
 - Clean Architectures in Python
   - [Chapter 1 - Components of a clean architecture](https://esa-pages.io/p/sharing/13096/posts/77/e9555c80213e3a06c79d.html)
   - [Chapter 2 - A basic example](https://esa-pages.io/p/sharing/13096/posts/78/87195b8d27503c153e86.html)
