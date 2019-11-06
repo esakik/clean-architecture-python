@@ -7,7 +7,7 @@
 - leonardo-giordani (example1)
   - An application based on "Clean Architectures in Python" written by Leonardo Giordani.
 - parrot-backend (example2)
-  - A backend service of my original application "PARROT".
+  - A backend service of my application [PARROT](https://github.com/esaki01/parrot).
 
 ## Notes
 - Clean Architecture 達人に学ぶソフトウェアの構造と設計
