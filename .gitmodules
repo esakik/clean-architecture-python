@@ -1,0 +1,6 @@
+[submodule "leonardo-giordani"]
+	path = leonardo-giordani
+	url = https://github.com/esaki01/leonardo-giordani
+[submodule "parrot-backend"]
+	path = parrot-backend
+	url = https://github.com/esaki01/parrot-backend
