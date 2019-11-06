@@ -5,7 +5,7 @@
 
 ## Examples
 - leonardo-giordani (example1)
-  - An application based on "Clean Architectures in Python" written in Leonardo Giordani.
+  - An application based on "Clean Architectures in Python" written by Leonardo Giordani.
 - parrot-backend (example2)
   - A backend service of my original application "PARROT".
 
