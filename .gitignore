@@ -1,5 +1,11 @@
+.DS_Store
+
+# Editor directories and files
 .idea
-.pytest_cache
-.python-version
-venv
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 __pycache__
