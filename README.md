@@ -11,7 +11,10 @@
 
 ## Notes
 - Clean Architecture 達人に学ぶソフトウェアの構造と設計
-  - [第22章 クリーンアーキテクチャ](https://esa-pages.io/p/sharing/13096/posts/81/adbcc7d1228f77b039be.html)
+  - [第Ⅰ部 イントロダクション](https://esa-pages.io/p/sharing/13096/posts/82/9ca18306e374e25a920e.html)
+  - [第Ⅱ部 プログラミングパラダイム](https://esa-pages.io/p/sharing/13096/posts/83/89386949e0a27f4542eb.html)
+  - [第Ⅲ部 設計の原則](https://esa-pages.io/p/sharing/13096/posts/84/0d3ef99d191d7f6122ba.html)
+  - [第Ⅳ部 コンポーネントの原則](https://esa-pages.io/p/sharing/13096/posts/85/d08be48b3ade35f9ac68.html)
 
 ## Reference
 - [The Clean Code Blog](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
