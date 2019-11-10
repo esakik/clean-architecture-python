@@ -8,10 +8,11 @@
 <img width="793" alt="スクリーンショット 2019-11-10 16 50 25" src="https://user-images.githubusercontent.com/44774033/68540739-3b3f9d00-03da-11ea-985f-11139caf4b4b.png">
 
 ## Example Codes
-- leonardo-giordani (example1)
-  - An application based on "Clean Architectures in Python" written by Leonardo Giordani.
-- parrot-backend (example2)
-  - A backend service of my application [PARROT](https://github.com/esaki01/parrot).
+### [leonardo-giordani (example1)](https://github.com/esaki01/leonardo-giordani)
+An application based on "Clean Architectures in Python" written by Leonardo Giordani.
+
+### [parrot-backend (example2)](https://github.com/esaki01/parrot-backend)
+A backend service of my application [PARROT](https://github.com/esaki01/parrot).
 
 ## Notes
 - Clean Architecture 達人に学ぶソフトウェアの構造と設計
