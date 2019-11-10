@@ -5,7 +5,7 @@
 
 ## Typical Component Diagram
 
-<img width="793" alt="スクリーンショット 2019-11-10 21 37 01" src="https://user-images.githubusercontent.com/44774033/68544048-473f5500-0402-11ea-9322-1d7f94583451.png">
+<img width="792" alt="スクリーンショット 2019-11-10 21 38 10" src="https://user-images.githubusercontent.com/44774033/68544061-6b9b3180-0402-11ea-8cc7-1794eead69d4.png">
 
 ## Example Codes
 ### [leonardo-giordani (example1)](https://github.com/esaki01/leonardo-giordani)
