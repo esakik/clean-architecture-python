@@ -3,7 +3,12 @@
 
 ![9e81aff57482b9d4b6c7782ced66e55c-png](https://user-images.githubusercontent.com/44774033/55669786-5e3f2700-58b6-11e9-93ef-96ee10d24100.png)
 
-## Examples
+## Typical component diagram
+
+<img width="800" alt="スクリーンショット 2019-11-10 16 40 15" src="https://user-images.githubusercontent.com/44774033/68540643-d33c8700-03d8-11ea-9dd5-d77248e2a98d.png">
+
+
+## Example codes
 - leonardo-giordani (example1)
   - An application based on "Clean Architectures in Python" written by Leonardo Giordani.
 - parrot-backend (example2)
