@@ -15,6 +15,7 @@
   - [第Ⅱ部 プログラミングパラダイム](https://esa-pages.io/p/sharing/13096/posts/83/89386949e0a27f4542eb.html)
   - [第Ⅲ部 設計の原則](https://esa-pages.io/p/sharing/13096/posts/84/0d3ef99d191d7f6122ba.html)
   - [第Ⅳ部 コンポーネントの原則](https://esa-pages.io/p/sharing/13096/posts/85/d08be48b3ade35f9ac68.html)
+  - [第Ⅴ部 アーキテクチャ](https://esa-pages.io/p/sharing/13096/posts/86/eedaa89f8c6666ee69bb.html)
 
 ## Reference
 - [The Clean Code Blog](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
