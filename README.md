@@ -5,7 +5,7 @@
 
 ## Typical component diagram
 
-<img width="800" alt="スクリーンショット 2019-11-10 16 40 15" src="https://user-images.githubusercontent.com/44774033/68540643-d33c8700-03d8-11ea-9dd5-d77248e2a98d.png">
+<img width="793" alt="スクリーンショット 2019-11-10 16 44 13" src="https://user-images.githubusercontent.com/44774033/68540685-5eb61800-03d9-11ea-8cd1-813ec74f4551.png">
 
 
 ## Example codes
