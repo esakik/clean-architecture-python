@@ -8,19 +8,19 @@
 <img width="792" alt="スクリーンショット 2019-11-10 21 38 10" src="https://user-images.githubusercontent.com/44774033/68544061-6b9b3180-0402-11ea-8cc7-1794eead69d4.png">
 
 ## Example Codes
-### [leonardo-giordani (example1)](https://github.com/esaki01/leonardo-giordani)
+### [leonardo-giordani (example1)](https://github.com/esakik/leonardo-giordani)
 An application based on "Clean Architectures in Python" written by Leonardo Giordani.
 
-### [parrot-backend (example2)](https://github.com/esaki01/parrot-backend)
-A backend service of my application [PARROT](https://github.com/esaki01/parrot).
+### [parrot-backend (example2)](https://github.com/esakik/parrot-backend)
+A backend service of my application [PARROT](https://github.com/esakik/parrot).
 
 ## Notes
 - Clean Architecture 達人に学ぶソフトウェアの構造と設計
-  - [第Ⅰ部 イントロダクション](https://esa-pages.io/p/sharing/13096/posts/82/9ca18306e374e25a920e.html)
-  - [第Ⅱ部 プログラミングパラダイム](https://esa-pages.io/p/sharing/13096/posts/83/89386949e0a27f4542eb.html)
-  - [第Ⅲ部 設計の原則](https://esa-pages.io/p/sharing/13096/posts/84/0d3ef99d191d7f6122ba.html)
-  - [第Ⅳ部 コンポーネントの原則](https://esa-pages.io/p/sharing/13096/posts/85/d08be48b3ade35f9ac68.html)
-  - [第Ⅴ部 アーキテクチャ](https://esa-pages.io/p/sharing/13096/posts/86/eedaa89f8c6666ee69bb.html)
+  - [第Ⅰ部 イントロダクション](https://www.notion.so/4be4eac00d4e43d18d8f17dad689d187)
+  - [第Ⅱ部 プログラミングパラダイム](https://www.notion.so/4b2efdc4355440828464558c3b011778)
+  - [第Ⅲ部 設計の原則](https://www.notion.so/b6c86fdae5254fffbdd5a4bba960c146)
+  - [第Ⅳ部 コンポーネントの原則](https://www.notion.so/905f21629b7b407392791bfc3d142aa9)
+  - [第Ⅴ部 アーキテクチャ](https://www.notion.so/8e4d90c9b16b46d59d37def080001290)
 
 ## Reference
 - [The Clean Code Blog](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
